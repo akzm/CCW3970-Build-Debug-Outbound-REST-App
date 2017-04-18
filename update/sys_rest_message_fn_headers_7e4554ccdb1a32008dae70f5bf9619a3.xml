@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn_headers">
+    <sys_rest_message_fn_headers action="INSERT_OR_UPDATE">
+        <name>content-type</name>
+        <rest_message_function display_value="Publish Message">4c2410ccdb1a32008dae70f5bf9619e2</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_headers</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-04-18 03:57:20</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>7e4554ccdb1a32008dae70f5bf9619a3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>content-type</sys_name>
+        <sys_package display_value="CCW3970" source="x_snc_ccw3970">b813148cdb1a32008dae70f5bf96195a</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="CCW3970">b813148cdb1a32008dae70f5bf96195a</sys_scope>
+        <sys_update_name>sys_rest_message_fn_headers_7e4554ccdb1a32008dae70f5bf9619a3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-04-18 03:57:20</sys_updated_on>
+        <value>application/json</value>
+    </sys_rest_message_fn_headers>
+</record_update>
