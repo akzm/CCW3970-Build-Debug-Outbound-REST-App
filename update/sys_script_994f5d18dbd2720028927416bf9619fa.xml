@@ -30,6 +30,7 @@
         <role_conditions/>
         <script><![CDATA[/*
  Advanced Business Rule Script to publish message to PubNub Service Using RESTMessageV2 API to issue HTTP Request
+ Publish message containing select subset of fields from the incident record that has been updated or inserted
  */
 (function executeBusinessRule() {
     try {
@@ -42,17 +43,36 @@
         req.setStringParameterNoEscape('sub_key', 'sub-c-dafe9b8c-1ae1-11e7-bc52-02ee2ddab7fe');
         req.setStringParameterNoEscape('channel', 'CCW3970_' + instanceName);
 
+        //  Build a data transfer object representing the incident record to be sent as JSON to PubNub
+        var DTOIncident = {
+            'sys_id': current.getValue('sys_id'),
+            'number': current.getValue('number'),
+            'caller_id': current.getDisplayValue('caller_id'),
+            'active': current.getValue('active'),
+            'state': current.getDisplayValue('state'),
+            'category': current.getValue('category'),
+            'subcategory': current.getValue('subcategory'),
+            'assignment_group': current.getDisplayValue('assignment_group'),
+            'assigned_to': current.getDisplayValue('assigned_to'),
+            'priority': current.getDisplayValue('priority'),
+            'updated_on': current.getValue('sys_updated_on'),
+            'updated_by': current.getValue('sys_updated_by'),
+            'created_on': current.getValue('sys_created_on'),
+            'created_by': current.getValue('sys_created_by')
+        };
 
-        var body = '{"message":"hello PubNub from CCW3970 Lab Instance '+ instanceName +'"}';
+        //  Convert DTO to JSON string
+        var body = JSON.stringify(DTOIncident);
         req.setRequestBody(body);
 
 
+        //  Execute request
         var res = req.execute();
         var responseBody = res.getBody();
         var httpStatus = res.getStatusCode();
         gs.debug(httpStatus);
     }
-    catch(ex) {
+    catch (ex) {
         var message = ex.getMessage();
         gs.debug(message);
     }
@@ -64,7 +84,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>994f5d18dbd2720028927416bf9619fa</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Publish Update Insert PubNub</sys_name>
         <sys_overrides/>
         <sys_package display_value="CCW3970" source="x_snc_ccw3970">b813148cdb1a32008dae70f5bf96195a</sys_package>
@@ -73,7 +93,7 @@
         <sys_scope display_value="CCW3970">b813148cdb1a32008dae70f5bf96195a</sys_scope>
         <sys_update_name>sys_script_994f5d18dbd2720028927416bf9619fa</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-04-19 04:25:20</sys_updated_on>
+        <sys_updated_on>2017-04-19 04:42:36</sys_updated_on>
         <template/>
         <when>async</when>
     </sys_script>
