@@ -34,12 +34,10 @@
  */
 (function executeBusinessRule() {
     try {
-
         var instanceName = gs.getProperty('instance_name');
-        var instanceId = gs.getProperty('instance_id');
         var req = new sn_ws.RESTMessageV2('PubNub', 'Publish Message');
         req.setStringParameterNoEscape('pub_key', 'pub-c-11b9ede6-f9ee-4da8-a829-944a45f29eb8');
-        req.setStringParameterNoEscape('client', instanceName + '-' + instanceId );
+        req.setStringParameterNoEscape('client', instanceName);
         req.setStringParameterNoEscape('sub_key', 'sub-c-dafe9b8c-1ae1-11e7-bc52-02ee2ddab7fe');
         req.setStringParameterNoEscape('channel', 'CCW3970_' + instanceName);
 
@@ -81,7 +79,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>994f5d18dbd2720028927416bf9619fa</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Publish Update Insert PubNub</sys_name>
         <sys_overrides/>
         <sys_package display_value="CCW3970" source="x_snc_ccw3970">b813148cdb1a32008dae70f5bf96195a</sys_package>
@@ -90,7 +88,7 @@
         <sys_scope display_value="CCW3970">b813148cdb1a32008dae70f5bf96195a</sys_scope>
         <sys_update_name>sys_script_994f5d18dbd2720028927416bf9619fa</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-04-19 21:08:21</sys_updated_on>
+        <sys_updated_on>2017-04-20 06:28:46</sys_updated_on>
         <template/>
         <when>async</when>
     </sys_script>
